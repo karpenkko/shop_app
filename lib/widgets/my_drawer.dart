@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'my_list_tile.dart';
+import 'drawer_list_tile.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -24,13 +24,13 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              MyListTile(
-                text: 'Shop',
+              DrawerListTile(
+                text: 'Магазин',
                 icon: Icons.home,
                 onTap: () => Navigator.pop(context),
               ),
-              MyListTile(
-                text: 'Cart',
+              DrawerListTile(
+                text: 'Кошик',
                 icon: Icons.shopping_cart,
                 onTap: () {
                   Navigator.pop(context);
@@ -41,8 +41,8 @@ class MyDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
-            child: MyListTile(
-              text: 'Exit',
+            child: DrawerListTile(
+              text: 'Вихід',
               icon: Icons.logout,
               onTap: () => Navigator.pushNamedAndRemoveUntil(
                 context,

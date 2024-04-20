@@ -13,7 +13,12 @@ class ShopPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shop page'),
+        title: const Text(
+          'Магазин',
+          style: TextStyle(
+            fontFamily: 'KharkivTone',
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -27,25 +32,33 @@ class ShopPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       drawer: const MyDrawer(),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(height: 25),
-          Center(
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0, right: 25.0),
             child: Text(
-              'Pick from a selected list of premium products',
+              'Наша місія - проектувати вироби, які не тільки виглядають чудово, але і сприяють глибшому зв\'язку з природою.',
               style: TextStyle(
+                fontFamily: 'DidactGothic',
+                fontSize: 18,
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
           ),
           SizedBox(
-            height: 700,
+            height: 680,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(15),
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                return ProductTile(product: product);
+                return ProductTile(
+                  product: product,
+                  showButton: true,
+                );
               },
             ),
           ),

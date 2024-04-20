@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/widgets/cart_list_tile.dart';
 import 'package:shop_app/widgets/my_button.dart';
 import '../models/product.dart';
 import '../models/shop.dart';
@@ -12,18 +13,38 @@ class CartPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        content: const Text('Remove this from your cart?'),
+        content: const Text(
+          'Видалити цей товар з кошику?',
+          style: TextStyle(
+            fontFamily: 'DidactGothic',
+            fontSize: 16,
+          ),
+        ),
+        contentPadding:
+            const EdgeInsets.only(left: 24, right: 24, top: 30, bottom: 40),
         actions: [
           MaterialButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text(
+              'Скасувати',
+              style: TextStyle(
+                fontFamily: 'DidactGothic',
+                fontSize: 16,
+              ),
+            ),
           ),
           MaterialButton(
             onPressed: () {
               Navigator.pop(context);
               context.read<Shop>().removeFromCart(product);
             },
-            child: const Text('Yes'),
+            child: const Text(
+              'Так',
+              style: TextStyle(
+                fontFamily: 'DidactGothic',
+                fontSize: 16,
+              ),
+            ),
           ),
         ],
       ),
@@ -34,7 +55,15 @@ class CartPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => const AlertDialog(
-        content: Text('User wants to pay!'),
+        contentPadding:
+            EdgeInsets.only(left: 24, right: 24, top: 28, bottom: 30),
+        content: Text(
+          'Проведення оплати :)',
+          style: TextStyle(
+            fontFamily: 'DidactGothic',
+            fontSize: 18,
+          ),
+        ),
       ),
     );
   }
@@ -45,7 +74,12 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart page'),
+        title: const Text(
+          'Кошик',
+          style: TextStyle(
+            fontFamily: 'KharkivTone',
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -55,19 +89,24 @@ class CartPage extends StatelessWidget {
         children: [
           Expanded(
             child: cart.isEmpty
-                ? const Center(child: const Text('Your cart is empty'))
+                ? const Center(
+                    child: Text(
+                      'Ваш кошик пустий :(',
+                      style: TextStyle(
+                        fontFamily: 'DidactGothic',
+                        fontSize: 18,
+                      ),
+                    ),
+                  )
                 : ListView.builder(
+                    physics: const BouncingScrollPhysics(),
                     itemCount: cart.length,
                     itemBuilder: (context, index) {
                       final item = cart[index];
 
-                      return ListTile(
-                        title: Text(item.name),
-                        subtitle: Text(item.price.toStringAsFixed(2)),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: () => removeIconFromCart(context, item),
-                        ),
+                      return CartListTile(
+                        product: item,
+                        removeIconFromCart: removeIconFromCart,
                       );
                     },
                   ),
@@ -76,7 +115,14 @@ class CartPage extends StatelessWidget {
             padding: const EdgeInsets.all(30.0),
             child: MyButton(
               onTap: () => payButtonPressed(context),
-              child: const Text('PAY NOW'),
+              child: Text(
+                'Оплатити',
+                style: TextStyle(
+                  fontFamily: 'KharkivTone',
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
             ),
           ),
         ],

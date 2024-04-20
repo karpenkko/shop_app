@@ -19,23 +19,33 @@ class IntroPage extends StatelessWidget {
             ),
             const SizedBox(height: 25),
             const Text(
-              'Minimal Shop',
+              'Етно шоп',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
+                fontFamily: 'KharkivTone',
                 fontSize: 24,
               ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              'Premium Quality Products',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.inversePrimary,
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 300,
+              child: Text(
+                'прикраси з використанням природних каменів та мінералів',
+                style: TextStyle(
+                  fontFamily: 'DidactGothic',
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  fontSize: 18,
+                  height: 1.2,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 35),
             MyButton(
               onTap: () => Navigator.pushNamed(context, '/shop_page'),
-              child: const Icon(Icons.arrow_forward),
+              child: Icon(
+                Icons.arrow_forward,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ],
         ),

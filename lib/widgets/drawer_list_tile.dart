@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MyListTile extends StatelessWidget {
+class DrawerListTile extends StatelessWidget {
   final String text;
   final IconData icon;
   final void Function()? onTap;
 
-  const MyListTile({
+  const DrawerListTile({
     super.key,
     required this.text,
     required this.icon,
@@ -19,9 +19,15 @@ class MyListTile extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           icon,
-          color: Colors.grey,
+          color: Theme.of(context).colorScheme.inversePrimary,
         ),
-        title: Text(text),
+        title: Text(
+          text,
+          style: const TextStyle(
+            fontFamily: 'DidactGothic',
+            fontSize: 18,
+          ),
+        ),
         onTap: onTap,
       ),
     );
