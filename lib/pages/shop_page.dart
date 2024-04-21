@@ -47,7 +47,7 @@ class ShopPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 680,
+            height: 640,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,

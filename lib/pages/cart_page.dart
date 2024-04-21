@@ -4,7 +4,6 @@ import 'package:shop_app/widgets/cart_list_tile.dart';
 import 'package:shop_app/widgets/my_button.dart';
 import '../models/product.dart';
 import '../models/shop.dart';
-import '../widgets/my_drawer.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});

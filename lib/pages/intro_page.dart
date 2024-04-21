@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/shop_page.dart';
+import 'package:shop_app/pages/wrap_page.dart';
 import 'package:shop_app/widgets/my_button.dart';
 
 class IntroPage extends StatelessWidget {
@@ -41,7 +43,14 @@ class IntroPage extends StatelessWidget {
             ),
             const SizedBox(height: 35),
             MyButton(
-              onTap: () => Navigator.pushNamed(context, '/shop_page'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WrapPage(),
+                  ),
+                );
+              },
               child: Icon(
                 Icons.arrow_forward,
                 color: Theme.of(context).colorScheme.primary,
