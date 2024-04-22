@@ -40,4 +40,7 @@ class Shop extends ChangeNotifier{
     _cart.remove(item);
     notifyListeners();
   }
+
+  bool showReservation = false;
+
 }

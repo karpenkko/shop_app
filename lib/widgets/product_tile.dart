@@ -14,12 +14,22 @@ class ProductTile extends StatefulWidget {
     required this.showButton,
   });
 
+
+
   @override
   State<ProductTile> createState() => _ProductTileState();
 }
 
 class _ProductTileState extends State<ProductTile> {
-  bool? reservationResult = false;
+
+  bool reservationResult = false;
+
+  @override
+  void initState() {
+    super.initState();
+    reservationResult = context.read<Shop>().showReservation;
+  }
+
 
   void addToCart(BuildContext context) {
     showDialog(
@@ -141,7 +151,7 @@ class _ProductTileState extends State<ProductTile> {
                         ),
                       )
                     : Row(
-                        children: reservationResult!
+                        children: reservationResult
                             ? [
                                 const SizedBox(
                                   width: 150,

@@ -15,7 +15,7 @@ class ProductReservation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(context, false),
               icon: const Icon(
                 Icons.close,
                 size: 28,

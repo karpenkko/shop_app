@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../pages/cart_page.dart';
 import 'drawer_list_tile.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
 
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,7 +40,11 @@ class MyDrawer extends StatelessWidget {
                 icon: Icons.shopping_cart,
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, '/cart_page');
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CartPage(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -44,11 +54,11 @@ class MyDrawer extends StatelessWidget {
             child: DrawerListTile(
               text: 'Вихід',
               icon: Icons.logout,
-              onTap: () => Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/intro_page',
-                (route) => false,
-              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamedAndRemoveUntil('/intro_page', (route) => false);
+              },
             ),
           ),
         ],
